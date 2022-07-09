@@ -1,0 +1,46 @@
+<html>
+
+<head>
+    <title>Vue JS Dasar</title>
+    <link rel="stylesheet" href="index.css">
+    <style>
+        .title {
+            color: green;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        {{ message }}
+
+        <p>{{ teks }}</p>
+
+        <i>{{ name }}</i>
+    </div>
+
+    <div id="app-2">
+        <span v-bind:title="pesan">
+            Arahkan mouse Anda kesini dan tunggu dalam beberapa detik
+            untuk melihat judul pesan yang dinamis
+        </span>
+    </div>
+
+    <div id="app3">
+        <h1>{{ message }}</h1>
+    </div>
+
+    <div id="app4">
+        <h2 v-html="message"></h2>
+    </div>
+
+    <div id="app5">
+        <h1></h1>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+
+</html>
