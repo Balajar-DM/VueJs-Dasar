@@ -10,7 +10,54 @@
 </head>
 
 <body>
+    <div id="app">
+        <form action="#">
+            <input type="text" name="title" v-model="title" placeholder="Title" />
 
+            {{ title }}
+            <br><br>
+            <textarea name="description" v-model="description" cols="30" rows="10"
+                placeholder="Masukan deskripsi"></textarea>
+
+            {{ description }}
+            <br><br>
+
+            <input type="number" name="price" v-model.number="price" placeholder="Price" />
+
+            {{ price }}
+
+            <br><br>
+
+            Paket <br>
+            <input type="radio" name="bukuA" value="A" v-model="paket">
+            <label for="bukuA">Buku Laravel</label>
+            <br>
+            <input type="radio" name="bukuB" value="B" v-model="paket">
+            <label for="bukuB">Buku Vue</label>
+            <br>
+            <input type="radio" name="bukuAB" value="AB" v-model="paket">
+            <label for="bukuAB">Buku Laravel + Vue</label>
+            <br>
+            <span>Pilihan paket: {{ paket }}</span>
+            <br><br>
+
+            Kategori <br>
+            <select name="category" v-model="category">
+                <option disabled value="">Please select one</option>
+                <option>Graphics Programming</option>
+                <option>Mobile Application Development</option>
+                <option>Virtual and Augmented Reality</option>
+            </select>
+            <span>Selected {{ category }}</span>
+            <br><br>
+
+            Contoh Boolean Menggunakan Checkbox <br>
+            Gender <br>
+            <input type="checkbox" name="checkbox" v-model="gender">
+            <label for="checkbox">{{ gender }}</label>
+        </form>
+    </div>
 </body>
+<script src="index.js"></script>
 
 </html>
