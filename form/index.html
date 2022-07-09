@@ -54,7 +54,27 @@
             Contoh Boolean Menggunakan Checkbox <br>
             Gender <br>
             <input type="checkbox" name="checkbox" v-model="gender">
-            <label for="checkbox">{{ gender }}</label>
+            <label for="checkbox">{{ gender }}</label><br><br>
+
+            Example Data Array <br>
+            Hobi <br>
+            <input type="checkbox" name="hobby1" value="nonton" v-model="hobbies">
+            <label for="hobby1">Nonton</label>
+            <input type="checkbox" name="hobby2" value="jalan" v-model="hobbies">
+            <label for="hobby2">Jalan</label>
+            <input type="checkbox" name="hobby3" value="makan" v-model="hobbies">
+            <label for="hobby3">Makan</label>
+            <span>Pilihan hobi: {{ hobbies }}</span>
+            <br><br>
+
+            Multiple Selected <br>
+            Multiple Kategori <br>
+            <select v-model="categories" multiple>
+                <option value="01">Graphics Programming</option>
+                <option value="02">Mobile Application Development</option>
+                <option value="03">Virtual and Augmented Reality</option>
+            </select>
+            <span>Selected: {{ categories }}</span>
         </form>
     </div>
 </body>

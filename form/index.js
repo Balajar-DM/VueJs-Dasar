@@ -7,5 +7,7 @@ var vm = new Vue({
         paket: '',
         category: '',
         gender: true,
+        hobbies: [],
+        categories: [],
     },
 });
