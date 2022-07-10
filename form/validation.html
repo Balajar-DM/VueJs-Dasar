@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handling Submit Form & Validation</title>
+    <style>
+        form {
+            border: 1px solid #ddd;
+            padding: 5px;
+            width: 225px;
+            background: #efefef;
+        }
+        label {
+            display: block;
+            margin-top: 5px;
+        }
+
+        input, textarea, select, option {
+            min-width: 200px;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <form ref="formBook" @submit.prevent="submitForm($event)" action="#" method="post">
+            <p v-if="errors.length">
+                <b>Please correct the following error(s)</b>
+                <ul>
+                    <li v-for="error in errors">{{ error }}</li>
+                </ul>
+            </p>
+
+            <label>Title:</label>
+            <input type="text" v-model="title">
+
+            <label>Description:</label>
+            <input type="text" v-model="description">
+
+            <label>Authors:</label>
+            <input type="text" v-model="authors">
+
+            <label>Price:</label>
+            <input type="text" v-model.number="price">
+
+            <label>Categories</label>
+            <select v-model="categories" multiple>
+                <option v-for="option in options" :value="option.value">
+                    {{ option.text }}
+                </option>
+            </select>
+
+            <label></label>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+<script src="validation.js"></script>
+
+</html>
