@@ -47,16 +47,33 @@ var vm = new Vue({
             }
 
             if (this.errors.length === 0) {
-                alert('Terima kasih telah mengirim data dengan benar!')
+                // alert('Terima kasih telah mengirim data dengan benar!')
                 // persiapkan data
-                let formData = new FormData()
-                formData.append('title', this.title)
-                formData.append('description', this.description)
-                formData.append('authors', this.authors)
-                formData.append('price', this.price)
-                formData.append('categories', this.categories)
-            }
+                let formBook = this.$refs.formBook
+                formData = new FormData(formBook)
 
+                //kirim data ke server
+                let xhttp = new XMLHttpRequest() // create objek XMLHttp
+
+                // definisikan fungsi
+                xhttp.onreadystatechange = function () {
+                    // state ini menunjukkan data terkirim dan diterima server dengan
+                    baik
+                    if (this.readyState == 4 && this.status == 200) {
+                        // respon text dari server
+                        console.log(this.responseText)
+                    }
+                }
+                // sesuaikan dengan lokasi file index.php di lokasi komputer kamu
+                xhttp.open("POST", "endpoint_validation.php", true)
+
+                // bisa juga langsung nama filenya jika berada dalam satu folder yang sama
+
+                // xhttp.open("POST", "index.php", true)
+
+                // kirim objek formData
+                xhttp.send(formData)
+            }
         }
     },
 })

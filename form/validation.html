@@ -13,12 +13,16 @@
             width: 225px;
             background: #efefef;
         }
+
         label {
             display: block;
             margin-top: 5px;
         }
 
-        input, textarea, select, option {
+        input,
+        textarea,
+        select,
+        option {
             min-width: 200px;
         }
     </style>
@@ -36,19 +40,19 @@
             </p>
 
             <label>Title:</label>
-            <input type="text" v-model="title">
+            <input type="text" name="title" v-model="title">
 
             <label>Description:</label>
-            <input type="text" v-model="description">
+            <input type="text" name="description" v-model="description">
 
             <label>Authors:</label>
-            <input type="text" v-model="authors">
+            <input type="text" name="authors" v-model="authors">
 
             <label>Price:</label>
-            <input type="text" v-model.number="price">
+            <input type="number" name="price" v-model.number="price">
 
             <label>Categories</label>
-            <select v-model="categories" multiple>
+            <select name="categories" v-model="categories" multiple>
                 <option v-for="option in options" :value="option.value">
                     {{ option.text }}
                 </option>
