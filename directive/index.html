@@ -1,0 +1,126 @@
+<html>
+
+<head>
+    <title>Vue Dasar - Directive</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <!-- v-html = merupakan directive untuk menampilkan data berupa kode HTML -->
+    <p v-html="message"></p>
+
+    <!-- v-once = merupakan directive yang digunakan agar nilai pada template tidak bisa diubah-ubah lagi  -->
+    <p v-once>{{ message }}</p>
+
+    <!-- v-text = merupakan directive yang digunakan untuk menampilkan string biasa, fungsinya sama dengan mustache atau double kurung kurawal. -->
+    <p v-text="message"></p>
+
+    <!-- v-show = merupakan directive yang digunakan untuk menampilkan atau menyembunyikan suatu elemen DOM. Directive ini membutuhkan variabel bertipe boolean -->
+    <p v-show="displayMessage">{{ message }}</p>
+
+    <!-- v-if = Hampir sama dengan v-show, v-if merupakan directive yang digunakan untuk merender atau tidak merender suatu elemen DOM -->
+    <h1 v-if="renderTitle">{{ title }}</h1>
+    <h1 v-else>Untitle</h1>
+    <template v-if="content">
+        <h1>Title</h1>
+        <p>Paragraph 1</p>
+        <p>Paragraph 2</p>
+    </template>
+    <div id="app">
+        <div v-if="nilai === 'A'">
+            Sempurna
+        </div>
+        <div v-else-if="nilai === 'B'">
+            Bagus
+        </div>
+        <div v-else-if="nilai === 'C'">
+            Cukup
+        </div>
+        <div v-else>
+            Kurang
+        </div>
+    </div>
+
+
+    <!-- v-on = merupakan directive yang berperan sebagai sebuah event listener pada elemen HTML/komponen Vue. Directive ini bertugas memantau aktifitas (aksi) yang dilakukan terhadapa suatu elemen HTML/komponen Vue. -->
+    <button v-on:click="info('halo')">
+        Informasi
+    </button>
+    <hr>
+    <div id="app2">
+        <button v-on:click="counter += 1">
+            Counter
+        </button>
+        <p>Button di atas telah diklik sebanyak {{ counter }} kali.</p>
+    </div>
+
+    <!-- mencegah reload halaman saat event submit -->
+    <form v-on:submit.prevent="onSubmit"></form>
+
+    <!-- ketika ditekan enter maka akan menjalankan fungsi submit -->
+    <input v-on:keyup.enter="info('Terima kasih ' + $event.target.value)">
+
+    <!-- Shift + Click -->
+    <button v-on:click.ctrl="info('hola')">
+        SHIFT + CLICK
+    </button>
+
+    <!-- object syntax (2.4.0+) -->
+    <button v-on="{ mousedown: doThis, mouseup: doThat }"></button>
+
+    <!-- chain modifiers -->
+    <button v-on:click.stop.prevent="doThis"></button>
+
+    <!-- akan dijalankan ketika CTRL ditekan meskipun saat yang bersamaan Alt atau Shift juga diklik -->
+    <button @click.ctrl="onClick">A</button>
+
+    <!-- hanya akan dijalankan ketika CTRL diklik dan tidak mengklik key lain -->
+    <button @click.ctrl.exact="onCtrlClick">A</button>
+
+    <!-- akan dijalankan ketika pengguna mengklik kanan mousenya pada button ini -->
+    <button @click.right="onRightClick">A</button>
+
+    <!-- Catatan: penulisan directive v-on: dapat disingkat menjadi @ -->
+    <button @click="info('halo')">Info</button>
+
+    <hr>
+
+    <!-- v-bind = directive ini berfungsi untuk membinding atribut HTML atau komponen agar nilainya terupdate secara reactive sesuai dengan datanya, kebalikan dari v-on -->
+    <div id="app3">
+        <img v-bind:src="imageSrc">
+    </div>
+    <!-- Catatan penulisan directive v-bind: dapat disingkat menjadi : -->
+    <a :href="url">Website VueJS</a>
+
+    <script>
+        //v-if
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                nilai: "B",
+            },
+        });
+
+        //v-on:click
+        var example1 = new Vue({
+            el: '#app2',
+            data: {
+                counter: 0
+            }
+        })
+
+        //v-bind
+        var vm = new Vue({
+            el: '#app3',
+            data: {
+                imageSrc: 'vuelogo.png',
+            }
+        })
+        setTimeout(() => { 
+            vm.imageSrc = 'vuehitam.png'
+         }, 3000)
+    </script>
+</body>
+
+</html>
