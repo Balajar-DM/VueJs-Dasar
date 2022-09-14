@@ -42,17 +42,19 @@
         </div>
     </div>
 
+    <hr>
 
     <!-- v-on = merupakan directive yang berperan sebagai sebuah event listener pada elemen HTML/komponen Vue. Directive ini bertugas memantau aktifitas (aksi) yang dilakukan terhadapa suatu elemen HTML/komponen Vue. -->
-    <button v-on:click="info('halo')">
-        Informasi
-    </button>
-    <hr>
     <div id="app2">
         <button v-on:click="counter += 1">
             Counter
         </button>
         <p>Button di atas telah diklik sebanyak {{ counter }} kali.</p>
+
+        <hr>
+        <button v-on:click="info('selamat datang')">
+            Informasi
+        </button>
     </div>
 
     <!-- mencegah reload halaman saat event submit -->
@@ -107,7 +109,12 @@
             el: '#app2',
             data: {
                 counter: 0
-            }
+            },
+            methods: {
+                info(text) {
+                    alert(text)
+                }
+            },
         })
 
         //v-bind
@@ -117,9 +124,9 @@
                 imageSrc: 'vuelogo.png',
             }
         })
-        setTimeout(() => { 
+        setTimeout(() => {
             vm.imageSrc = 'vuehitam.png'
-         }, 3000)
+        }, 3000)
     </script>
 </body>
 
